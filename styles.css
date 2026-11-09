@@ -1,0 +1,1024 @@
+/* ==========================================================================
+   Fuentes Originales de la Invitación (Extraídas de Canva)
+   ========================================================================== */
+@font-face {
+  font-family: 'Snell Roundhand';
+  src: url('assets/fonts/2a0b5f90f195029a3b22e69462e34243.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Baskerville Display PT';
+  src: url('assets/fonts/56e5d1605fcb82bfe99b502b9f978182.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Le Jour Script';
+  src: url('assets/fonts/2faea3e90983560ff78cd76895644040.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Polls Script';
+  src: url('assets/fonts/36aabac5348efaba7532884a482ad477.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Polls Script';
+  src: url('assets/fonts/e9ff171fa10a889087bded05a695ef38.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RhymeTH Form';
+  src: url('assets/fonts/c31897df36143d22a3bcf472e1310ff6.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('assets/fonts/643ac850e2e978f704188215ff7f17de.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lumios Typewriter New';
+  src: url('assets/fonts/92a9f78b60200758e78790c2e90bfed7.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('assets/fonts/8a554be3f10d4a5c0b33a5b14bbcaa92.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('assets/fonts/903046509a38aa787d25066b795b75d6.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   Variables y Reset
+   ========================================================================== */
+:root {
+  --bg-ivory: #fef8f8;
+  --bg-outer: #f3ece8;
+  --envelope-brown: #543a1b;
+  --olive-title: #71723a;
+  --olive-banner: #a9af76;
+  --olive-muted: #9fa063;
+  --forest-green: #2b4108;
+  --gold-soft: #c8b97a;
+  --gold-amber: #be8522;
+  --gold-deep: #bc750e;
+  --gold-bright: #d3a931;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--bg-ivory);
+  color: var(--forest-green);
+  font-family: 'Open Sans', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+body.envelope-locked {
+  overflow: hidden;
+  height: 100dvh;
+}
+
+/* Lienzo de destellos dorados flotantes en toda la invitación */
+.sparkles-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* ==========================================================================
+   PANTALLA 1: EL SOBRE / CARTA INTERACTIVA CON ANIMACIÓN 3D
+   ========================================================================== */
+.envelope-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #f9f6ee 0%, #ebe4d4 100%);
+  perspective: 1600px;
+  transition: opacity 0.95s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.95s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.envelope-overlay.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.envelope-stage {
+  position: relative;
+  width: min(100vw, calc(100dvh * 0.75), 540px);
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.envelope-3d {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  container-type: inline-size;
+  background-color: #f8f5ec;
+  background-image: url('assets/media/cover_envelope.jpg');
+  background-size: 100% 100%;
+  background-position: center;
+  box-shadow: 0 25px 70px rgba(84, 58, 27, 0.22);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.envelope-letter-preview {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 10%;
+  bottom: 8%;
+  background: var(--bg-ivory);
+  border-radius: 6px;
+  box-shadow: 0 10px 35px rgba(84, 58, 27, 0.18);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 28px;
+  opacity: 0;
+  transform: translateY(18%) scale(0.94);
+  transition: transform 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.45s,
+              opacity 0.5s ease 0.35s;
+  overflow: hidden;
+}
+
+.envelope-letter-preview img {
+  width: 72%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.envelope-letter-preview .preview-names {
+  font-family: 'Le Jour Script', cursive;
+  font-size: clamp(28px, 7vw, 40px);
+  color: var(--olive-title);
+  margin-top: -24px;
+  text-align: center;
+  line-height: 1.35;
+}
+
+.envelope-pocket {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background-image: url('assets/media/cover_envelope.jpg');
+  background-size: 100% 100%;
+  background-position: center;
+  clip-path: polygon(0 39.5%, 50% 70.2%, 100% 39.5%, 100% 100%, 0 100%);
+}
+
+.envelope-flap-top {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: transform 1.05s cubic-bezier(0.4, 0, 0.2, 1),
+              z-index 0s linear 0.5s;
+}
+
+.envelope-flap-front {
+  position: absolute;
+  inset: 0;
+  background-color: #f8f5ec;
+  background-image: url('assets/media/cover_envelope.jpg');
+  background-size: 100% 100%;
+  background-position: center;
+  clip-path: polygon(0 0, 100% 0, 100% 39.8%, 54% 69%, 50% 70.5%, 46% 69%, 0 39.8%);
+}
+
+.cover-names {
+  position: absolute;
+  top: 17.1%;
+  left: 3%;
+  width: 94%;
+  font-family: 'Snell Roundhand', cursive;
+  font-weight: 400;
+  font-size: clamp(38px, 11.5vw, 72px);
+  font-size: 13.4cqw;
+  color: var(--envelope-brown);
+  text-align: center;
+  line-height: 1.18;
+  white-space: nowrap;
+  text-shadow: -1.8px 1.8px 2.5px rgba(100, 70, 35, 0.35);
+}
+
+.cover-subtitle {
+  position: absolute;
+  top: 32.3%;
+  left: 5.5%;
+  width: 89%;
+  font-family: 'Baskerville Display PT', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(15px, 3.8vw, 22px);
+  font-size: 4.07cqw;
+  color: var(--envelope-brown);
+  letter-spacing: 0.06em;
+  text-align: center;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.wax-seal-wrapper {
+  position: absolute;
+  top: 59.74%;
+  left: 37.65%;
+  width: 25.06%;
+  height: 18.85%;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.45s ease;
+}
+
+.wax-seal-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+  border-radius: 50%;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.wax-seal-btn:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 18px rgba(188, 117, 14, 0.38));
+}
+
+.wax-seal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  animation: sealPulse 2.6s ease-in-out infinite;
+}
+
+.cover-hand-pointer {
+  position: absolute;
+  width: 41.1%;
+  height: auto;
+  left: 58.9%;
+  top: 58.1%;
+  transform: rotate(-21.04deg);
+  pointer-events: none;
+  animation: handTapCover 1.8s ease-in-out infinite;
+}
+
+@keyframes sealPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+@keyframes handTapCover {
+  0%, 100% { transform: translate(0, 0) rotate(-21.04deg) scale(1); }
+  50% { transform: translate(-6px, -8px) rotate(-21.04deg) scale(0.93); }
+}
+
+.envelope-overlay.is-opening .wax-seal-wrapper {
+  transform: scale(1.25);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.envelope-overlay.is-opening .envelope-flap-top {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope-overlay.is-opening .envelope-letter-preview {
+  opacity: 1;
+  transform: translateY(-10%) scale(1.03);
+}
+
+.envelope-overlay.is-opening .envelope-3d {
+  transform: translateY(14%) scale(1.08);
+}
+
+/* ==========================================================================
+   PANTALLA 2: INVITACIÓN PRINCIPAL Y ANIMACIONES CINEMATOGRÁFICAS
+   ========================================================================== */
+.invitation-page {
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  background-color: var(--bg-ivory);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.canva-stage-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 516px;
+  margin: 0 auto;
+  background-color: var(--bg-ivory);
+}
+
+.canva-canvas {
+  position: relative;
+  width: 516px;
+  height: 6962px;
+  transform-origin: top left;
+}
+
+.c-el {
+  position: absolute;
+}
+
+.c-el img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.c-el.cover-img img {
+  object-fit: cover;
+}
+
+/* Aparición suave tipo video */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Efecto Ken Burns (Zoom lento cinematográfico en fotos de los novios) */
+.ken-burns-frame {
+  overflow: hidden;
+}
+
+.ken-burns-img {
+  animation: kenBurnsZoom 14s ease-in-out infinite alternate;
+  transform-origin: center center;
+}
+
+.kb-delay-1 {
+  animation-delay: -4s;
+}
+
+.kb-delay-2 {
+  animation-delay: -8s;
+}
+
+@keyframes kenBurnsZoom {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.08) translate(0, -1.5%); }
+}
+
+/* Movimiento orgánico de brisa en ramos florales y hojas */
+.botanical-sway {
+  animation: gentleSway 6.5s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+@keyframes gentleSway {
+  0% { transform: rotate(-1.6deg) scale(1); }
+  100% { transform: rotate(1.6deg) scale(1.015); }
+}
+
+/* ==========================================================================
+   1. Nombres Hero: Darling & Kevin
+   ========================================================================== */
+.hero-names {
+  font-family: 'Le Jour Script', cursive;
+  font-size: 55.06px;
+  color: var(--olive-title);
+  line-height: 1.32;
+  white-space: pre;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   2. Reproductor de Música Dorado 100% Vivo (HTML/CSS/SVG)
+   ========================================================================== */
+.live-music-player {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--gold-deep);
+  padding: 2px 4px;
+}
+
+.mp-top-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 30px;
+  padding-right: 4px;
+}
+
+.mp-heart-icon {
+  width: 34px;
+  height: 34px;
+  fill: var(--gold-deep);
+  transition: transform 0.3s ease;
+}
+
+.live-music-player.is-playing .mp-heart-icon {
+  animation: heartBeat 1.4s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.14); }
+  50% { transform: scale(0.96); }
+  75% { transform: scale(1.08); }
+}
+
+.mp-progress-track {
+  position: relative;
+  width: 96%;
+  height: 5px;
+  margin: 8px auto 0;
+  background-color: rgba(188, 117, 14, 0.32);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.mp-progress-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background-color: var(--gold-deep);
+  border-radius: 999px;
+  transition: width 0.15s linear;
+}
+
+.mp-progress-thumb {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 20px;
+  height: 20px;
+  background-color: var(--gold-deep);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 6px rgba(188, 117, 14, 0.35);
+  transition: left 0.15s linear, transform 0.2s ease;
+}
+
+.mp-progress-track:hover .mp-progress-thumb {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.mp-time-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold-deep);
+  padding: 4px 2px 0;
+  letter-spacing: 0.02em;
+}
+
+.mp-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 2px 0;
+}
+
+.mp-icon-btn {
+  background: none;
+  border: none;
+  color: var(--gold-deep);
+  fill: var(--gold-deep);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.mp-icon-btn:hover {
+  transform: scale(1.12);
+}
+
+.mp-play-circle {
+  width: 102px;
+  height: 102px;
+  border-radius: 50%;
+  border: 4px solid var(--gold-deep);
+  background: transparent;
+  color: var(--gold-deep);
+  fill: var(--gold-deep);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mp-play-circle:hover {
+  transform: scale(1.06);
+  background-color: rgba(188, 117, 14, 0.07);
+  box-shadow: 0 6px 18px rgba(188, 117, 14, 0.22);
+}
+
+.mp-svg-play {
+  display: block;
+  margin-left: 4px;
+}
+
+.mp-svg-pause {
+  display: none;
+}
+
+.live-music-player.is-playing .mp-svg-play {
+  display: none;
+}
+
+.live-music-player.is-playing .mp-svg-pause {
+  display: block;
+}
+
+.music-hand-pointer {
+  pointer-events: none;
+  animation: musicHandPulse 1.7s ease-in-out infinite;
+}
+
+@keyframes musicHandPulse {
+  0%, 100% { transform: rotate(-39.47deg) translate(0, 0); }
+  50% { transform: rotate(-39.47deg) translate(-4px, -7px); }
+}
+
+.music-caption {
+  font-family: 'TT Polls Script', cursive;
+  font-size: 27.46px;
+  color: var(--gold-soft);
+  line-height: 1.28;
+  text-align: center;
+}
+
+/* ==========================================================================
+   3. Franja Verde Olivo: "Tenemos algo que contarte"
+   ========================================================================== */
+.olive-banner-bg {
+  left: -50vw !important;
+  width: 200vw !important;
+  background-color: var(--olive-banner);
+}
+
+.olive-banner-text {
+  font-family: 'RhymeTH Form', serif;
+  font-size: 55.98px;
+  color: var(--bg-ivory);
+  text-align: center;
+  line-height: 1.25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   4. Calendario Enero 2027 (Sábado 30 de Enero)
+   ========================================================================== */
+.save-date-title {
+  font-family: 'TT Polls Script', cursive;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--gold-soft);
+  text-align: center;
+}
+
+.save-date-subtitle {
+  font-family: 'TT Polls Script', cursive;
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--gold-amber);
+  text-align: center;
+}
+
+.calendar-month-title {
+  font-family: 'TT Polls Script', cursive;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--olive-muted);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.calendar-table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--gold-soft);
+}
+
+.calendar-table th {
+  font-weight: 400;
+  font-size: 18px;
+  padding-bottom: 4px;
+  color: var(--gold-soft);
+}
+
+.calendar-table td {
+  font-size: 15.4px;
+  color: var(--gold-soft);
+  vertical-align: middle;
+  height: 36px;
+}
+
+.wedding-day-cell {
+  position: relative;
+  color: var(--gold-amber) !important;
+  font-weight: 700;
+}
+
+.wedding-day-num {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  line-height: 1;
+  font-size: 14.5px;
+}
+
+.c-el img.heart-day-marker {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  width: 36px;
+  height: 33px;
+  transform: translate(-50%, -48%);
+  pointer-events: none;
+  z-index: 1;
+  animation: heartDayPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes heartDayPulse {
+  0%, 100% { transform: translate(-50%, -48%) scale(1); }
+  50% { transform: translate(-50%, -48%) scale(1.1); }
+}
+
+/* ==========================================================================
+   5. Cuenta Regresiva Nativa
+   ========================================================================== */
+.countdown-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.countdown-header {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #cc9933;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(200, 185, 122, 0.45);
+  padding-bottom: 4px;
+  width: 88%;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 92%;
+  gap: 6px;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-val {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--gold-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold-soft);
+  margin-top: 3px;
+}
+
+/* ==========================================================================
+   6. Textos, Fotografías 30|01|27 e Itinerario
+   ========================================================================== */
+.witness-text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 23.57px;
+  color: var(--gold-amber);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.date-photo-num {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 110px;
+  color: var(--bg-ivory);
+  text-align: center;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.22);
+  pointer-events: none;
+}
+
+.section-frame-title {
+  font-family: 'Lumios Typewriter New', monospace, serif;
+  font-weight: 700;
+  font-size: 31.16px;
+  color: var(--gold-amber);
+  text-align: center;
+  line-height: 1.05;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.itinerary-heading {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--gold-soft);
+  text-align: center;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.itinerary-sub {
+  font-family: 'Lumios Typewriter New', monospace, serif;
+  font-weight: 700;
+  font-size: 20.49px;
+  color: var(--forest-green);
+  text-align: center;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.timeline-line-h {
+  background-color: var(--gold-amber);
+  height: 4px;
+  border-radius: 2px;
+  transform-origin: center;
+}
+
+.timeline-line-v {
+  background-color: var(--gold-amber);
+  width: 4px;
+  border-radius: 2px;
+  transform-origin: top center;
+}
+
+.body-copy-justify {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: var(--forest-green);
+  text-align: justify;
+  line-height: 1.38;
+}
+
+/* ==========================================================================
+   8. Ubicación (Ceremonia, Recepción, Cabañas) y Confirmación
+   ========================================================================== */
+.location-intro {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 19.0px;
+  color: var(--forest-green);
+  text-align: center;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.location-hint {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13.22px;
+  color: var(--forest-green);
+  text-align: justify;
+  line-height: 1.28;
+}
+
+.location-label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18.67px;
+  color: var(--forest-green);
+  text-align: center;
+  line-height: 1.15;
+}
+
+.interactive-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.interactive-link:hover {
+  transform: scale(1.07);
+  filter: drop-shadow(0 4px 10px rgba(188, 117, 14, 0.28));
+}
+
+.click-hand-green {
+  pointer-events: none;
+  animation: greenHandPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes greenHandPulse {
+  0%, 100% { transform: rotate(-33.94deg) scale(1); }
+  50% { transform: rotate(-33.94deg) scale(0.9) translate(-2px, -4px); }
+}
+
+.rsvp-btn-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  color: var(--forest-green);
+  text-align: center;
+  line-height: 1.15;
+  pointer-events: none;
+}
+
+/* Foto final en arco con marco dorado y efecto Ken Burns */
+.arch-photo-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.arch-photo-clip {
+  position: absolute;
+  inset: 1.5% 1.7%;
+  border-radius: 999px 999px 0 0;
+  overflow: hidden;
+}
+
+.arch-photo-clip img.ken-burns-arch {
+  position: absolute;
+  width: 192%;
+  height: 170%;
+  left: -46%;
+  top: -35%;
+  object-fit: cover;
+  animation: kenBurnsArch 15s ease-in-out infinite alternate;
+}
+
+@keyframes kenBurnsArch {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.07); }
+}
+
+.arch-frame-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bible-verse {
+  font-family: 'TT Polls Script', cursive;
+  font-size: 27.46px;
+  color: var(--gold-soft);
+  text-align: center;
+  line-height: 1.35;
+}
+
+/* ==========================================================================
+   CONTROLES FLOTANTES DE VIDEO / AUTOSCROLL Y MÚSICA
+   ========================================================================== */
+.floating-controls {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(254, 248, 248, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(190, 133, 34, 0.35);
+  padding: 6px 12px;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(84, 58, 27, 0.15);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.floating-controls.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.ctrl-btn {
+  background: none;
+  border: none;
+  color: var(--gold-deep);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 999px;
+  transition: background-color 0.2s ease;
+}
+
+.ctrl-btn:hover {
+  background-color: rgba(190, 133, 34, 0.12);
+}
+
+.ctrl-divider {
+  width: 1px;
+  height: 16px;
+  background-color: rgba(190, 133, 34, 0.3);
+}

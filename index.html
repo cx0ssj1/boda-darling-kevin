@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Darling &amp; Kevin — ¡Nos vamos a casar! (30 de Enero de 2027)</title>
+  <meta name="description" content="Acompáñanos a celebrar nuestra boda el Sábado 30 de Enero de 2027 a las 17:00 hrs en Lebu. Presiona la carta para abrir tu invitación." />
+
+  <!-- Open Graph / Vista previa para WhatsApp, Facebook e Instagram -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:site_name" content="Boda Darling &amp; Kevin" />
+  <meta property="og:title" content="💍 Darling &amp; Kevin — Invitación a Nuestra Boda" />
+  <meta property="og:description" content="¡Nos vamos a casar! Sábado 30 de Enero de 2027 · 17:00 hrs · Lebu. Toca para abrir nuestra carta de invitación." />
+  <meta property="og:image" content="assets/media/og-preview.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Darling &amp; Kevin — 30 de Enero de 2027" />
+
+  <!-- Twitter / Tarjeta enriquecida -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="💍 Darling &amp; Kevin — Invitación a Nuestra Boda" />
+  <meta name="twitter:description" content="¡Nos vamos a casar! Sábado 30 de Enero de 2027 · 17:00 hrs · Lebu." />
+  <meta name="twitter:image" content="assets/media/og-preview.jpg" />
+
+  <link rel="icon" href="assets/media/MAG-PmQeqv0.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="envelope-locked">
+
+  <!-- Lienzo de partículas/destellos dorados flotantes tipo video -->
+  <canvas id="sparkles-canvas" class="sparkles-canvas" aria-hidden="true"></canvas>
+
+  <!-- Audio nativo de la canción de la boda ("ADMV" - Maluma, desde 0:23) -->
+  <audio id="wedding-audio" preload="auto" loop>
+    <source src="assets/media/song.m4a" type="audio/mp4" />
+    <source src="assets/media/song.webm" type="audio/webm" />
+  </audio>
+
+  <!-- ========================================================================
+       PANTALLA 1: LA CARTA / SOBRE CON ANIMACIÓN DE APERTURA 3D
+       ======================================================================== -->
+  <div id="envelope-overlay" class="envelope-overlay" role="dialog" aria-label="Carta de invitación de boda de Darling y Kevin">
+    <div id="envelope-stage" class="envelope-stage" title="Presiona la carta para abrir la invitación">
+      <div class="envelope-3d">
+
+        <!-- Vista previa de la tarjeta interior que emerge al abrirse la solapa -->
+        <div class="envelope-letter-preview" aria-hidden="true">
+          <img src="assets/media/MAHZ4lgj8GM.png" alt="Darling y Kevin" />
+          <div class="preview-names">Darling &amp; Kevin</div>
+        </div>
+
+        <!-- Bolsillo del sobre -->
+        <div class="envelope-pocket" aria-hidden="true"></div>
+
+        <!-- Solapa superior 3D con los textos originales de la portada -->
+        <div class="envelope-flap-top">
+          <div class="envelope-flap-front">
+            <h1 class="cover-names">Darling &amp; Kevin</h1>
+            <p class="cover-subtitle">INVITACIÓN</p>
+          </div>
+        </div>
+
+        <!-- Sello de lacre dorado y cursor animado original -->
+        <div class="wax-seal-wrapper">
+          <button id="open-envelope-btn" class="wax-seal-btn" type="button" aria-label="Abrir invitación">
+            <img class="wax-seal-img" src="assets/media/MAG-PmQeqv0.png" alt="Sello de lacre dorado - Abrir invitación" />
+            <img class="cover-hand-pointer" src="assets/media/MAG4YM0K2_M_black.png" alt="" aria-hidden="true" />
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       PANTALLA 2: INVITACIÓN PRINCIPAL (DISEÑO EXACTO + AUTOSCROLL TIPO VIDEO)
+       ======================================================================== -->
+  <main id="invitation-main" class="invitation-page">
+    <div id="canva-stage-wrapper" class="canva-stage-wrapper">
+      <div id="canva-canvas" class="canva-canvas">
+
+        <!-- ==================== SECCIÓN 1: HERO & MÚSICA ==================== -->
+        <!-- Foto principal pastel K & D con efecto Ken Burns -->
+        <div class="c-el reveal-on-scroll ken-burns-frame" style="top: 3.7px; left: 69.7px; width: 399.6px; height: 599.4px;">
+          <img class="ken-burns-img" src="assets/media/MAHZ4lgj8GM.png" alt="Darling y Kevin" />
+        </div>
+
+        <!-- Nombres Darling & Kevin en Le Jour Script -->
+        <div class="c-el hero-names reveal-on-scroll" style="top: 494.0px; left: 52.2px; width: 539.9px; height: 220.0px;">Darling 
+            &amp;
+         Kevin</div>
+
+        <!-- Reproductor de Música Dorado 100% Vivo e Interactivo -->
+        <div id="music-player-box" class="c-el live-music-player reveal-on-scroll" style="top: 713.9px; left: 69.2px; width: 377.6px; height: 202.0px;">
+          <!-- Fila superior: Corazón animado a la derecha -->
+          <div class="mp-top-row">
+            <svg class="mp-heart-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+
+          <!-- Barra de progreso interactiva en vivo -->
+          <div id="mp-progress-track" class="mp-progress-track" role="slider" aria-label="Progreso de la canción" tabindex="0">
+            <div id="mp-progress-fill" class="mp-progress-fill"></div>
+            <div id="mp-progress-thumb" class="mp-progress-thumb"></div>
+          </div>
+
+          <!-- Tiempos reales de la canción -->
+          <div class="mp-time-row">
+            <span id="mp-current-time">00:00</span>
+            <span id="mp-total-time">03:09</span>
+          </div>
+
+          <!-- Controles de reproducción dorados -->
+          <div class="mp-controls-row">
+            <!-- Shuffle -->
+            <button class="mp-icon-btn" type="button" id="mp-restart-btn" title="Reiniciar canción" aria-label="Reiniciar canción">
+              <svg viewBox="0 0 24 24" width="28" height="28">
+                <path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/>
+              </svg>
+            </button>
+
+            <!-- Anterior -->
+            <button class="mp-icon-btn" type="button" id="mp-prev-btn" title="Retroceder 10 segundos" aria-label="Retroceder 10 segundos">
+              <svg viewBox="0 0 24 24" width="32" height="32">
+                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+              </svg>
+            </button>
+
+            <!-- Botón Central Play / Pausa -->
+            <button class="mp-play-circle" type="button" id="music-play-btn" title="Reproducir o pausar nuestra canción" aria-label="Reproducir o pausar música">
+              <!-- Icono Play -->
+              <svg class="mp-svg-play" viewBox="0 0 24 24" width="44" height="44">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <!-- Icono Pausa -->
+              <svg class="mp-svg-pause" viewBox="0 0 24 24" width="42" height="42">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+              </svg>
+            </button>
+
+            <!-- Siguiente -->
+            <button class="mp-icon-btn" type="button" id="mp-next-btn" title="Adelantar 10 segundos" aria-label="Adelantar 10 segundos">
+              <svg viewBox="0 0 24 24" width="32" height="32">
+                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+              </svg>
+            </button>
+
+            <!-- Repetir -->
+            <button class="mp-icon-btn" type="button" id="mp-loop-btn" title="Repetir canción" aria-label="Repetir canción">
+              <svg viewBox="0 0 24 24" width="28" height="28">
+                <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mano dorada apuntando al reproductor -->
+        <div class="c-el music-hand-pointer reveal-on-scroll" style="top: 850.5px; left: 403.8px; width: 45.2px; height: 80.1px; transform: rotate(-39.47deg);">
+          <img src="assets/media/MAFnXzCh5d0_gold.png" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- Texto: Nuestra historia suena mejor con música ... dale play -->
+        <div class="c-el music-caption reveal-on-scroll" style="top: 936.7px; left: 83.0px; width: 350.0px; height: 70.5px;">
+          Nuestra historia suena<br />mejor con música ... dale play
+        </div>
+
+        <!-- Ramo floral acuarela superior con brisa suave -->
+        <div class="c-el reveal-on-scroll" style="top: 1021.5px; left: 45.5px; width: 425.0px; height: 229.5px; transform: rotate(-19.8deg);">
+          <img class="botanical-sway" src="assets/media/MAE9R0NS7E8.png" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- ==================== SECCIÓN 2: BANNER OLIVO ==================== -->
+        <div class="c-el olive-banner-bg" style="top: 1316.2px; height: 194.0px;"></div>
+        <div class="c-el olive-banner-text reveal-on-scroll" style="top: 1340.8px; left: 74.6px; width: 366.7px; height: 144.8px;">
+          Tenemos algo<br />que contarte
+        </div>
+
+        <!-- ==================== SECCIÓN 3: GUARDA LA FECHA & CALENDARIO ==================== -->
+        <div class="c-el reveal-on-scroll" style="top: 1628.8px; left: 6.1px; width: 503.8px; height: 539.7px;">
+          <!-- ¡Nos vamos a casar! -->
+          <div class="c-el save-date-title" style="top: 0px; left: 79.0px; width: 376.8px; height: 47.2px;">
+            ¡Nos vamos a casar!
+          </div>
+          <!-- guarda la fecha -->
+          <div class="c-el save-date-subtitle" style="top: 47.2px; left: 162.4px; width: 189.5px; height: 33.4px;">
+            guarda la fecha
+          </div>
+
+          <!-- Ramas verdes con destellos dorados izquierda y derecha -->
+          <div class="c-el" style="top: 86.4px; left: 27.1px; width: 104.9px; height: 135.4px; transform: rotate(30.53deg);">
+            <img class="botanical-sway" src="assets/media/MAFgc0_n7QU.png" alt="" aria-hidden="true" />
+          </div>
+          <div class="c-el" style="top: 400.6px; left: 386.3px; width: 97.0px; height: 125.1px; transform: rotate(-157.04deg);">
+            <img class="botanical-sway" src="assets/media/MAFgc0_n7QU.png" alt="" aria-hidden="true" />
+          </div>
+
+          <!-- Marcos dorados esquineros del calendario -->
+          <div class="c-el" style="top: 181.1px; left: 54.0px; width: 322.9px; height: 341.6px; transform: rotate(-90deg); pointer-events: none;">
+            <img src="assets/media/MAHSyxe_AQI.png" alt="" aria-hidden="true" />
+          </div>
+          <div class="c-el" style="top: 102.4px; left: 137.4px; width: 322.9px; height: 341.6px; transform: rotate(90deg); pointer-events: none;">
+            <img src="assets/media/MAHSyxe_AQI.png" alt="" aria-hidden="true" />
+          </div>
+
+          <!-- Mes: Enero 2027 -->
+          <div class="c-el calendar-month-title" style="top: 158.0px; left: 195.0px; width: 130.0px; height: 28.0px;">
+            Enero 2027
+          </div>
+
+          <!-- Tabla Calendario Enero 2027 Corregida (1 de Enero 2027 = Viernes, 30 de Enero 2027 = Sábado) -->
+          <div class="c-el" style="top: 184.0px; left: 95.5px; width: 327.2px; height: 279.0px;">
+            <table class="calendar-table" aria-label="Calendario Enero 2027">
+              <thead>
+                <tr>
+                  <th>Lun</th>
+                  <th>Mar</th>
+                  <th>Mier</th>
+                  <th>Jue</th>
+                  <th>Vier</th>
+                  <th>Sab</th>
+                  <th>Dom</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td>
+                </tr>
+                <tr>
+                  <td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+                </tr>
+                <tr>
+                  <td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+                </tr>
+                <tr>
+                  <td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+                </tr>
+                <tr>
+                  <td>25</td><td>26</td><td>27</td><td>28</td><td>29</td>
+                  <td class="wedding-day-cell">
+                    <span class="wedding-day-num">30</span>
+                    <img class="heart-day-marker" src="assets/media/MAF4q6Npyzs.svg" alt="Sábado 30 de Enero" />
+                  </td>
+                  <td>31</td>
+                </tr>
+                <tr>
+                  <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Cuenta regresiva en tiempo real hasta el 30 de Enero de 2027 17:00 hrs -->
+        <div class="c-el countdown-widget reveal-on-scroll" style="top: 2190.0px; left: 62.2px; width: 411.6px; height: 112.0px;">
+          <div class="countdown-header">Comienza la cuenta regresiva</div>
+          <div class="countdown-grid" role="timer" aria-live="polite">
+            <div class="countdown-unit">
+              <span id="cd-days" class="countdown-val">82</span>
+              <span class="countdown-label">Días</span>
+            </div>
+            <div class="countdown-unit">
+              <span id="cd-hours" class="countdown-val">18</span>
+              <span class="countdown-label">Horas</span>
+            </div>
+            <div class="countdown-unit">
+              <span id="cd-mins" class="countdown-val">34</span>
+              <span class="countdown-label">Minutos</span>
+            </div>
+            <div class="countdown-unit">
+              <span id="cd-secs" class="countdown-val">00</span>
+              <span class="countdown-label">Segundos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Separador ornamental dorado -->
+        <div class="c-el reveal-on-scroll" style="top: 2332.0px; left: 55.5px; width: 425.0px; height: 51.0px;">
+          <img src="assets/media/MAG6EeZBbM4_gold.png" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- ==================== SECCIÓN 4: NOVIOS ILUSTRACIÓN & FECHA 30 01 27 ==================== -->
+        <div class="c-el witness-text reveal-on-scroll" style="top: 2418.0px; left: 51.5px; width: 413.0px; height: 28.3px; z-index: 3;">
+          Deseamos que seas testigo
+        </div>
+
+        <!-- Rama acuarela de fondo detrás de los novios (ajustada para no tapar el texto superior) -->
+        <div class="c-el reveal-on-scroll" style="top: 2578.0px; left: 68.0px; width: 380.0px; height: 164.0px; transform: rotate(-90deg); z-index: 1; opacity: 0.85;">
+          <img src="assets/media/MAEgdtCauOE.png" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- Ilustración de los novios -->
+        <div class="c-el reveal-on-scroll" style="top: 2482.1px; left: 155.9px; width: 230.9px; height: 334.6px; z-index: 2;">
+          <img src="assets/media/MAGXHSzUcl4.png" alt="Ilustración de los novios" />
+        </div>
+
+        <div class="c-el witness-text reveal-on-scroll" style="top: 2847.4px; left: 51.5px; width: 413.0px; height: 61.3px; z-index: 3;">
+          y nos acompañes en este momento inolvidable
+        </div>
+
+        <!-- Separador ornamental dorado -->
+        <div class="c-el reveal-on-scroll" style="top: 2948.7px; left: 58.8px; width: 425.0px; height: 51.0px;">
+          <img src="assets/media/MAG6EeZBbM4_gold.png" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- Tres paneles fotográficos con la fecha: 30 | 01 | 27 (con efecto Ken Burns) -->
+        <div class="c-el reveal-on-scroll" style="top: 3039.7px; left: 62.2px; width: 387.8px; height: 181.8px;">
+          <!-- 30 -->
+          <div class="c-el cover-img ken-burns-frame" style="top: 2.5px; left: 0px; width: 119.5px; height: 179.4px;">
+            <img class="ken-burns-img" src="assets/media/MAHZ4Tr9caA.jpg" alt="Anillo de compromiso - 30" />
+          </div>
+          <div class="c-el date-photo-num" style="top: 2.5px; left: 0px; width: 119.5px; height: 179.4px;">30</div>
+
+          <!-- 01 -->
+          <div class="c-el cover-img ken-burns-frame" style="top: 2.5px; left: 131.5px; width: 119.6px; height: 179.4px;">
+            <img class="ken-burns-img kb-delay-1" src="assets/media/MAHZ4eNTYi8.jpg" alt="Pastel de bodas - 01" />
+          </div>
+          <div class="c-el date-photo-num" style="top: 2.5px; left: 131.5px; width: 119.6px; height: 179.4px;">01</div>
+
+          <!-- 27 -->
+          <div class="c-el cover-img ken-burns-frame" style="top: 0px; left: 268.3px; width: 119.5px; height: 179.4px;">
+            <img class="ken-burns-img kb-delay-2" src="assets/media/MAHZ4Tr9caA.jpg" alt="Anillo de compromiso - 27" />
+          </div>
+          <div class="c-el date-photo-num" style="top: 0px; left: 268.3px; width: 119.5px; height: 179.4px;">27</div>
+        </div>
+
+        <!-- Dos ramitas de hojas verdes debajo de 30 | 01 | 27 -->
+        <div class="c-el reveal-on-scroll" style="top: 3228.6px; left: 123.5px; width: 265.1px; height: 79.5px;">
+          <div class="c-el" style="top: 0; left: 0; width: 132.6px; height: 79.5px;">
+            <img class="botanical-sway" src="assets/media/MAErw84sFDw.png" alt="" aria-hidden="true" />
+          </div>
+          <div class="c-el" style="top: 0; left: 132.6px; width: 132.6px; height: 79.5px;">
+            <img class="botanical-sway" src="assets/media/MAErw84sFDw.png" alt="" aria-hidden="true" />
+          </div>
+        </div>
+
+        <!-- ==================== SECCIÓN 5: ITINERARIO ==================== -->
+        <!-- Decoración botánica de fondo -->
+        <div class="c-el" style="top: 3315.1px; left: 368.0px; width: 125.0px; height: 108.8px; pointer-events: none;">
+          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+        </div>
+        <div class="c-el" style="top: 3326.0px; left: 16.0px; width: 72.0px; height: 225.0px; pointer-events: none;">
+          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- Título enmarcado: Itinerario -->
+        <div class="c-el reveal-on-scroll" style="top: 3422.9px; left: 95.1px; width: 325.7px; height: 99.4px;">
+          <img src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
+          <div class="c-el section-frame-title" style="top: 33.1px; left: 86.7px; width: 147.1px; height: 30.4px;">Itinerario</div>
+        </div>
+
+        <!-- Decoración botánica lateral (ubicada en espacios libres sin tocar textos ni líneas) -->
+        <div class="c-el" style="top: 3856.0px; left: 16.0px; width: 66.0px; height: 206.0px; pointer-events: none;">
+          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+        </div>
+        <div class="c-el" style="top: 3542.0px; left: 18.0px; width: 96.0px; height: 83.5px; pointer-events: none;">
+          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- Línea vertical central del Itinerario con dibujo progresivo -->
+        <div class="c-el timeline-line-v reveal-on-scroll" style="top: 3608.4px; left: 267.6px; height: 437.1px;"></div>
+
+        <!-- Hito 1: El gran dia - 30 de Enero de 2027 -->
+        <div class="c-el reveal-on-scroll" style="top: 3569.2px; left: 353.1px; width: 74.0px; height: 57.4px;">
+          <img src="assets/media/MAE3CFNmDL8_gold.png" alt="Anillos de boda" />
+        </div>
+        <div class="c-el timeline-line-h reveal-on-scroll" style="top: 3641.3px; left: 269.6px; width: 201.3px;"></div>
+        <div class="c-el itinerary-heading reveal-on-scroll" style="top: 3660.4px; left: 325.0px; width: 145.8px; height: 33.4px;">El gran dia</div>
+        <div class="c-el itinerary-sub reveal-on-scroll" style="top: 3700.4px; left: 273.4px; width: 233.4px; height: 23.9px;">30 de Enero de 2027</div>
+
+        <!-- Hito 2: Ceremonia - 17:00 hrs -->
+        <div class="c-el reveal-on-scroll" style="top: 3652.9px; left: 127.7px; width: 90.1px; height: 94.9px;">
+          <img src="assets/media/MAHDQTFdHhw_colored.svg" alt="Iglesia Ceremonia" />
+        </div>
+        <div class="c-el timeline-line-h reveal-on-scroll" style="top: 3759.7px; left: 69.9px; width: 201.3px;"></div>
+        <div class="c-el itinerary-heading reveal-on-scroll" style="top: 3775.8px; left: 94.3px; width: 152.3px; height: 33.4px;">Ceremonia</div>
+        <div class="c-el itinerary-sub reveal-on-scroll" style="top: 3821.2px; left: 57.4px; width: 233.4px; height: 23.9px;">17:00 hrs</div>
+
+        <!-- Hito 3: Recepción - 20:00 hrs -->
+        <div class="c-el reveal-on-scroll" style="top: 3798.3px; left: 342.3px; width: 95.5px; height: 71.6px;">
+          <img src="assets/media/MAHARRwVbPg_itinerario.png" alt="Recepción" />
+        </div>
+        <div class="c-el timeline-line-h reveal-on-scroll" style="top: 3876.0px; left: 272.2px; width: 201.3px;"></div>
+        <div class="c-el itinerary-heading reveal-on-scroll" style="top: 3895.1px; left: 318.9px; width: 142.4px; height: 33.4px;">Recepción</div>
+        <div class="c-el itinerary-sub reveal-on-scroll" style="top: 3943.5px; left: 273.4px; width: 233.4px; height: 23.9px;">20:00 hrs</div>
+
+        <!-- ==================== SECCIÓN 6: CÓDIGO DE VESTIMENTA ==================== -->
+        <!-- Decoración botánica de fondo -->
+        <div class="c-el" style="top: 4135.0px; left: 12.0px; width: 62.0px; height: 194.0px; pointer-events: none;">
+          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+        </div>
+        <div class="c-el" style="top: 4195.0px; left: 382.0px; width: 115.0px; height: 100.0px; pointer-events: none;">
+          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- Título enmarcado: Código de vestimenta -->
+        <div class="c-el reveal-on-scroll" style="top: 4085.7px; left: 107.0px; width: 320.1px; height: 97.6px;">
+          <img src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
+        </div>
+        <div class="c-el section-frame-title reveal-on-scroll" style="top: 4119.2px; left: 120.1px; width: 293.9px; height: 29.9px;">
+          Código de vestimenta
+        </div>
+
+        <!-- Subtítulo: Formal playero -->
+        <div class="c-el itinerary-heading reveal-on-scroll" style="top: 4223.5px; left: 157.9px; width: 218.3px; height: 33.4px;">
+          Formal playero
+        </div>
+
+        <!-- Icono traje y vestido -->
+        <div class="c-el reveal-on-scroll" style="top: 4281.9px; left: 227.9px; width: 78.3px; height: 61.5px;">
+          <img src="assets/media/MAGATB4kQWs_gold.png" alt="Formal playero" />
+        </div>
+
+        <!-- Descripción Para ellas / Para ellos -->
+        <div class="c-el body-copy-justify reveal-on-scroll" style="top: 4355.7px; left: 72.0px; width: 376.6px; height: 150.8px;">
+          <p style="margin-bottom: 16px;">Para ellas: Vestidos frescos, telas ligeras y colores a elección. Se solicita evitar el color blanco y sus tonalidades similares, reservado para la novia.</p>
+          <p>Para ellos: Camisas, pantalones ligeros o bermudas elegantes. Se solicita evitar el color café y sus tonalidades.</p>
+        </div>
+
+        <!-- ==================== SECCIÓN 7: REGALOS ==================== -->
+        <!-- Decoración botánica de fondo -->
+        <div class="c-el" style="top: 4590.0px; left: 10.0px; width: 58.0px; height: 181.0px; pointer-events: none;">
+          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+        </div>
+        <div class="c-el" style="top: 4610.0px; left: 396.0px; width: 108.0px; height: 94.0px; pointer-events: none;">
+          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- Título enmarcado: Regalos -->
+        <div class="c-el reveal-on-scroll" style="top: 4601.6px; left: 97.5px; width: 325.7px; height: 99.4px;">
+          <img src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
+          <div class="c-el section-frame-title" style="top: 34.5px; left: 9.3px; width: 299.1px; height: 30.4px;">Regalos</div>
+        </div>
+
+        <!-- Texto Regalos -->
+        <div class="c-el body-copy-justify reveal-on-scroll" style="top: 4734.4px; left: 75.5px; width: 369.7px; height: 62.8px;">
+          Si desean hacernos un obsequio, agradecemos mucho su aporte en sobre, que nos ayudará a disfrutar de una inolvidable luna de miel
+        </div>
+
+        <!-- ==================== SECCIÓN 8: UBICACIÓN ==================== -->
+        <!-- Decoración botánica de fondo -->
+        <div class="c-el" style="top: 5041.2px; left: 24.0px; width: 72.0px; height: 225.0px; pointer-events: none;">
+          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+        </div>
+        <div class="c-el" style="top: 5042.2px; left: 362.0px; width: 125.0px; height: 108.8px; pointer-events: none;">
+          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+        </div>
+        <div class="c-el" style="top: 5465.8px; left: 362.0px; width: 125.0px; height: 108.8px; pointer-events: none;">
+          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+        </div>
+        <div class="c-el" style="top: 5440.0px; left: 24.0px; width: 72.0px; height: 210.0px; pointer-events: none;">
+          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- Título enmarcado: Ubicación -->
+        <div class="c-el reveal-on-scroll" style="top: 4860.2px; left: 101.0px; width: 318.8px; height: 97.2px;">
+          <img src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
+          <div class="c-el section-frame-title" style="top: 33.7px; left: 12.5px; width: 292.7px; height: 29.8px;">Ubicación</div>
+        </div>
+
+        <!-- Subtítulo: Nuestra boda se realizará en la comuna de Lebu -->
+        <div class="c-el location-intro reveal-on-scroll" style="top: 4980.0px; left: 23.0px; width: 470.0px; height: 32.0px;">
+          Nuestra boda se realizará en la comuna de Lebu
+        </div>
+
+        <!-- Grupo de Iconos de Ubicación con sus enlaces a Google Maps -->
+        <div class="c-el reveal-on-scroll" style="top: 5031.5px; left: 181.0px; width: 186.2px; height: 548.7px;">
+          <div class="c-el location-hint" style="top: -4.0px; left: -18.0px; width: 222.0px; height: 36.0px; text-align: center;">
+            Aprieta el icono para saber la ubicación exacta
+          </div>
+
+          <!-- 1. Ceremonia -->
+          <a class="c-el interactive-link" style="top: 50.2px; left: 26.3px; width: 90.1px; height: 94.9px;"
+             href="https://www.google.com/maps?q=-37.5782046,-73.6407207&amp;entry=gps&amp;shh=CAE&amp;lucs=,94297699,94231188,94280568,100821555,47071704,94218641,94282134,100835694,94286869,100820247,100822504,100838877,121816461&amp;g_ep=CAISEjI2LjQzLjEuMDAxOTUxMTAxMBgBIIgnKnssOTQyOTc2OTksOTQyMzExODgsOTQyODA1NjgsMTAwODIxNTU1LDQ3MDcxNzA0LDk0MjE4NjQxLDk0MjgyMTM0LDEwMDgzNTY5NCw5NDI4Njg2OSwxMDA4MjAyNDcsMTAwODIyNTA0LDEwMDgzODg3NywxMjE4MTY0NjFCAkNM&amp;skid=8e2ce966-6e0b-4fff-804e-ddf5273ade73&amp;g_st=iw"
+             target="_blank" rel="noopener noreferrer" aria-label="Ver ubicación de la Ceremonia en Google Maps">
+            <img src="assets/media/MAHDQTFdHhw_colored.svg" alt="Ubicación Ceremonia" />
+          </a>
+          <div class="c-el click-hand-green" style="top: 109.9px; left: 116.6px; width: 32.9px; height: 54.8px;">
+            <img src="assets/media/MAG4YM0K2_M_green.png" alt="" aria-hidden="true" />
+          </div>
+          <div class="c-el location-label" style="top: 152.0px; left: 24.2px; width: 102.6px; height: 22.3px;">
+            Ceremonia
+          </div>
+
+          <!-- 2. Recepción -->
+          <a class="c-el interactive-link" style="top: 226.2px; left: 21.2px; width: 95.5px; height: 71.6px;"
+             href="https://www.google.com/maps/place/37%C2%B035'54.4%22S+73%C2%B039'14.7%22W/@-37.5984511,-73.6566577,17z/data=!4m4!3m3!8m2!3d-37.5984511!4d-73.6540828?entry=ttu&amp;g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D"
+             target="_blank" rel="noopener noreferrer" aria-label="Ver ubicación de la Recepción en Google Maps">
+            <img src="assets/media/MAHARRwVbPg_ubicacion.png" alt="Ubicación Recepción" />
+          </a>
+          <div class="c-el click-hand-green" style="top: 256.7px; left: 119.6px; width: 32.9px; height: 54.8px;">
+            <img src="assets/media/MAG4YM0K2_M_green.png" alt="" aria-hidden="true" />
+          </div>
+          <div class="c-el location-label" style="top: 309.2px; left: 26.7px; width: 93.0px; height: 22.3px;">
+            Recepción
+          </div>
+
+          <!-- 3. Cabañas -->
+          <a class="c-el interactive-link" style="top: 414.6px; left: 14.9px; width: 130.9px; height: 100.8px;"
+             href="https://www.google.com/maps?q=-37.5782046,-73.6407207&amp;entry=gps&amp;shh=CAE&amp;lucs=,94297699,94231188,94280568,100821555,47071704,94218641,94282134,100835694,94286869,100820247,100822504,100838877,121816461&amp;g_ep=CAISEjI2LjQzLjEuMDAxOTUxMTAxMBgBIIgnKnssOTQyOTc2OTksOTQyMzExODgsOTQyODA1NjgsMTAwODIxNTU1LDQ3MDcxNzA0LDk0MjE4NjQxLDk0MjgyMTM0LDEwMDgzNTY5NCw5NDI4Njg2OSwxMDA4MjAyNDcsMTAwODIyNTA0LDEwMDgzODg3NywxMjE4MTY0NjFCAkNM&amp;skid=8e2ce966-6e0b-4fff-804e-ddf5273ade73&amp;g_st=iw"
+             target="_blank" rel="noopener noreferrer" aria-label="Ver ubicación de las Cabañas en Google Maps">
+            <img src="assets/media/MAHXOVmgOGg_gold.png" alt="Ubicación Cabañas" />
+          </a>
+          <div class="c-el click-hand-green" style="top: 489.4px; left: 125.9px; width: 32.9px; height: 54.8px;">
+            <img src="assets/media/MAG4YM0K2_M_green.png" alt="" aria-hidden="true" />
+          </div>
+          <div class="c-el location-label" style="top: 522.0px; left: 42.9px; width: 75.0px; height: 22.3px;">
+            Cabañas
+          </div>
+        </div>
+
+        <!-- ==================== SECCIÓN 9: CONSIDERACIONES & CONFIRMACIÓN ==================== -->
+        <!-- Decoración botánica de fondo (posicionada en márgenes libres sin pisar textos) -->
+        <div class="c-el" style="top: 5915.0px; left: 14.0px; width: 60.0px; height: 185.0px; pointer-events: none;">
+          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+        </div>
+        <div class="c-el" style="top: 5923.0px; left: 368.0px; width: 122.0px; height: 106.0px; pointer-events: none;">
+          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+        </div>
+        <div class="c-el" style="top: 6475.0px; left: 374.0px; width: 120.0px; height: 104.0px; pointer-events: none;">
+          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+        </div>
+        <div class="c-el" style="top: 6475.0px; left: 22.0px; width: 72.0px; height: 225.0px; pointer-events: none;">
+          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+        </div>
+        <div class="c-el" style="top: 6695.0px; left: 374.0px; width: 115.0px; height: 100.0px; pointer-events: none;">
+          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- Título enmarcado: Consideraciones -->
+        <div class="c-el reveal-on-scroll" style="top: 5654.6px; left: 98.6px; width: 318.8px; height: 97.2px;">
+          <img src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
+          <div class="c-el section-frame-title" style="top: 33.7px; left: 14.1px; width: 292.7px; height: 29.8px;">Consideraciones</div>
+        </div>
+
+        <!-- Texto mayores de 18 años -->
+        <div class="c-el body-copy-justify reveal-on-scroll" style="top: 5809.5px; left: 68.7px; width: 383.3px; height: 62.8px;">
+          Para disfrutar plenamente de esta celebración nos hemos reservado esta invitación para mayores de 18 años
+        </div>
+
+        <!-- Divisor de corazón dorado -->
+        <div class="c-el reveal-on-scroll" style="top: 5866.9px; left: 58.9px; width: 398.3px; height: 43.8px;">
+          <img src="assets/media/MAG4CofDznc_gold.png" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- Ramo floral acuarela con brisa suave -->
+        <div class="c-el reveal-on-scroll" style="top: 5956.6px; left: 182.9px; width: 150.2px; height: 138.2px;">
+          <img class="botanical-sway" src="assets/media/MAE9R9ERjuo.png" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- Texto confirmación -->
+        <div class="c-el body-copy-justify reveal-on-scroll" style="top: 6107.1px; left: 83.1px; width: 383.3px; height: 40.8px;">
+          Agradecemos mucho si puedes confirmar tu asistencia a nuestra boda
+        </div>
+
+        <!-- Botón Sello Confirmar Asistencia (Enlace original a Survio) -->
+        <a class="c-el interactive-link reveal-on-scroll" style="top: 6172.9px; left: 193.4px; width: 162.7px; height: 162.7px;"
+           href="https://www.survio.com/survey/d/U3C0F7F1P7E9T4O8C"
+           target="_blank" rel="noopener noreferrer" aria-label="Confirmar mi asistencia a la boda">
+          <img src="assets/media/MABcjojUSAY_colored.svg" alt="" aria-hidden="true" />
+          <div class="c-el" style="top: 20.5px; left: 44.3px; width: 74.1px; height: 88.2px; pointer-events: none;">
+            <img src="assets/media/MAGVH8JO4Rw_colored.svg" alt="" aria-hidden="true" />
+          </div>
+          <div class="c-el rsvp-btn-text" style="top: 117.7px; left: 25.6px; width: 111.5px; height: 26.3px;">
+            confirmar mi asistencia
+          </div>
+        </a>
+        <div class="c-el click-hand-green reveal-on-scroll" style="top: 6290.3px; left: 311.6px; width: 32.9px; height: 54.8px;">
+          <img src="assets/media/MAG4YM0K2_M_green.png" alt="" aria-hidden="true" />
+        </div>
+
+        <!-- Textos finales de confirmación -->
+        <div class="c-el body-copy-justify reveal-on-scroll" style="top: 6358.6px; left: 68.0px; width: 380.0px; height: 42.0px; text-align: center;">
+          Su confirmación nos permitirá preparar cada detalle para compartir juntos este día tan especial
+        </div>
+
+        <div class="c-el body-copy-justify reveal-on-scroll" style="top: 6412.0px; left: 68.0px; width: 380.0px; height: 22.0px; text-align: center;">
+          ¡Será una alegría contar con su presencia!
+        </div>
+
+        <!-- Foto de los novios en marco de arco dorado con efecto Ken Burns -->
+        <div class="c-el reveal-on-scroll" style="top: 6473.2px; left: 182.3px; width: 184.9px; height: 313.5px;">
+          <div class="arch-photo-container">
+            <div class="arch-photo-clip">
+              <img class="ken-burns-arch" src="assets/media/MAHZ4VmXC28.jpg" alt="Kevin y Darling" />
+            </div>
+            <img class="arch-frame-overlay" src="assets/media/MAEc7vgbZSM.png" alt="" aria-hidden="true" />
+          </div>
+        </div>
+
+        <!-- Versículo final Mateo 19; 4-6 -->
+        <div class="c-el bible-verse reveal-on-scroll" style="top: 6797.4px; left: 79.1px; width: 388.7px; height: 108.5px;">
+          “Lo que Dios juntó, no lo separe el hombre.”<br />Mateo 19; 4-6
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       CONTROLES FLOTANTES DISCRETOS (PAUSAR/REANUDAR AUTOSCROLL Y MÚSICA)
+       ======================================================================== -->
+  <div id="floating-controls" class="floating-controls" aria-label="Controles de invitación">
+    <button id="toggle-scroll-btn" class="ctrl-btn" type="button" title="Pausar o reanudar recorrido automático">
+      <span id="scroll-icon">⏸</span>
+      <span id="scroll-label">Auto-scroll</span>
+    </button>
+    <div class="ctrl-divider"></div>
+    <button id="toggle-audio-btn" class="ctrl-btn" type="button" title="Activar o silenciar música">
+      <span id="audio-icon">🔊</span>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
