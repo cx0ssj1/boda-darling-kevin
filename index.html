@@ -24,7 +24,11 @@
   <meta name="twitter:description" content="¡Nos vamos a casar! Sábado 30 de Enero de 2027 · 17:00 hrs · Lebu." />
   <meta name="twitter:image" content="assets/media/og-preview.jpg" />
 
-  <link rel="icon" href="assets/media/MAG-PmQeqv0.png" type="image/png" />
+  <link rel="icon" href="assets/media/favicon.png" type="image/png" />
+  <link rel="preload" as="image" href="assets/media/cover_envelope.jpg" />
+  <link rel="preload" as="image" href="assets/media/MAG-PmQeqv0.webp" />
+  <link rel="preload" as="font" type="font/woff" href="assets/fonts/2a0b5f90f195029a3b22e69462e34243.woff" crossorigin />
+  <link rel="preload" as="font" type="font/woff" href="assets/fonts/56e5d1605fcb82bfe99b502b9f978182.woff" crossorigin />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="envelope-locked">
@@ -33,7 +37,7 @@
   <canvas id="sparkles-canvas" class="sparkles-canvas" aria-hidden="true"></canvas>
 
   <!-- Audio nativo de la canción de la boda ("ADMV" - Maluma, desde 0:23) -->
-  <audio id="wedding-audio" preload="auto" loop>
+  <audio id="wedding-audio" preload="metadata" loop>
     <source src="assets/media/song.m4a" type="audio/mp4" />
     <source src="assets/media/song.webm" type="audio/webm" />
   </audio>
@@ -47,7 +51,7 @@
 
         <!-- Vista previa de la tarjeta interior que emerge al abrirse la solapa -->
         <div class="envelope-letter-preview" aria-hidden="true">
-          <img src="assets/media/MAHZ4lgj8GM.png" alt="Darling y Kevin" />
+          <img src="assets/media/MAHZ4lgj8GM.webp" alt="Darling y Kevin" />
           <div class="preview-names">Darling &amp; Kevin</div>
         </div>
 
@@ -65,7 +69,7 @@
         <!-- Sello de lacre dorado y cursor animado original -->
         <div class="wax-seal-wrapper">
           <button id="open-envelope-btn" class="wax-seal-btn" type="button" aria-label="Abrir invitación">
-            <img class="wax-seal-img" src="assets/media/MAG-PmQeqv0.png" alt="Sello de lacre dorado - Abrir invitación" />
+            <img class="wax-seal-img" src="assets/media/MAG-PmQeqv0.webp" alt="Sello de lacre dorado - Abrir invitación" />
             <img class="cover-hand-pointer" src="assets/media/MAG4YM0K2_M_black.png" alt="" aria-hidden="true" />
           </button>
         </div>
@@ -84,7 +88,7 @@
         <!-- ==================== SECCIÓN 1: HERO & MÚSICA ==================== -->
         <!-- Foto principal pastel K & D con efecto Ken Burns -->
         <div class="c-el reveal-on-scroll ken-burns-frame" style="top: 3.7px; left: 69.7px; width: 399.6px; height: 599.4px;">
-          <img class="ken-burns-img" src="assets/media/MAHZ4lgj8GM.png" alt="Darling y Kevin" />
+          <img class="ken-burns-img" src="assets/media/MAHZ4lgj8GM.webp" alt="Darling y Kevin" />
         </div>
 
         <!-- Nombres Darling & Kevin en Le Jour Script -->
@@ -159,7 +163,7 @@
 
         <!-- Mano dorada apuntando al reproductor -->
         <div class="c-el music-hand-pointer reveal-on-scroll" style="top: 850.5px; left: 403.8px; width: 45.2px; height: 80.1px; transform: rotate(-39.47deg);">
-          <img src="assets/media/MAFnXzCh5d0_gold.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAFnXzCh5d0_gold.png" alt="" aria-hidden="true" />
         </div>
 
         <!-- Texto: Nuestra historia suena mejor con música ... dale play -->
@@ -169,7 +173,7 @@
 
         <!-- Ramo floral acuarela superior con brisa suave -->
         <div class="c-el reveal-on-scroll" style="top: 1021.5px; left: 45.5px; width: 425.0px; height: 229.5px; transform: rotate(-19.8deg);">
-          <img class="botanical-sway" src="assets/media/MAE9R0NS7E8.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" class="botanical-sway" src="assets/media/MAE9R0NS7E8.webp" alt="" aria-hidden="true" />
         </div>
 
         <!-- ==================== SECCIÓN 2: BANNER OLIVO ==================== -->
@@ -191,18 +195,18 @@
 
           <!-- Ramas verdes con destellos dorados izquierda y derecha -->
           <div class="c-el" style="top: 86.4px; left: 27.1px; width: 104.9px; height: 135.4px; transform: rotate(30.53deg);">
-            <img class="botanical-sway" src="assets/media/MAFgc0_n7QU.png" alt="" aria-hidden="true" />
+            <img loading="lazy" decoding="async" class="botanical-sway" src="assets/media/MAFgc0_n7QU.webp" alt="" aria-hidden="true" />
           </div>
           <div class="c-el" style="top: 400.6px; left: 386.3px; width: 97.0px; height: 125.1px; transform: rotate(-157.04deg);">
-            <img class="botanical-sway" src="assets/media/MAFgc0_n7QU.png" alt="" aria-hidden="true" />
+            <img loading="lazy" decoding="async" class="botanical-sway" src="assets/media/MAFgc0_n7QU.webp" alt="" aria-hidden="true" />
           </div>
 
           <!-- Marcos dorados esquineros del calendario -->
           <div class="c-el" style="top: 181.1px; left: 54.0px; width: 322.9px; height: 341.6px; transform: rotate(-90deg); pointer-events: none;">
-            <img src="assets/media/MAHSyxe_AQI.png" alt="" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/media/MAHSyxe_AQI.webp" alt="" aria-hidden="true" />
           </div>
           <div class="c-el" style="top: 102.4px; left: 137.4px; width: 322.9px; height: 341.6px; transform: rotate(90deg); pointer-events: none;">
-            <img src="assets/media/MAHSyxe_AQI.png" alt="" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/media/MAHSyxe_AQI.webp" alt="" aria-hidden="true" />
           </div>
 
           <!-- Mes: Enero 2027 -->
@@ -241,7 +245,7 @@
                   <td>25</td><td>26</td><td>27</td><td>28</td><td>29</td>
                   <td class="wedding-day-cell">
                     <span class="wedding-day-num">30</span>
-                    <img class="heart-day-marker" src="assets/media/MAF4q6Npyzs.svg" alt="Sábado 30 de Enero" />
+                    <img loading="lazy" decoding="async" class="heart-day-marker" src="assets/media/MAF4q6Npyzs.svg" alt="Sábado 30 de Enero" />
                   </td>
                   <td>31</td>
                 </tr>
@@ -278,7 +282,7 @@
 
         <!-- Separador ornamental dorado -->
         <div class="c-el reveal-on-scroll" style="top: 2332.0px; left: 55.5px; width: 425.0px; height: 51.0px;">
-          <img src="assets/media/MAG6EeZBbM4_gold.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAG6EeZBbM4_gold.png" alt="" aria-hidden="true" />
         </div>
 
         <!-- ==================== SECCIÓN 4: NOVIOS ILUSTRACIÓN & FECHA 30 01 27 ==================== -->
@@ -288,12 +292,12 @@
 
         <!-- Rama acuarela de fondo detrás de los novios (ajustada para no tapar el texto superior) -->
         <div class="c-el reveal-on-scroll" style="top: 2578.0px; left: 68.0px; width: 380.0px; height: 164.0px; transform: rotate(-90deg); z-index: 1; opacity: 0.85;">
-          <img src="assets/media/MAEgdtCauOE.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAEgdtCauOE.webp" alt="" aria-hidden="true" />
         </div>
 
         <!-- Ilustración de los novios -->
         <div class="c-el reveal-on-scroll" style="top: 2482.1px; left: 155.9px; width: 230.9px; height: 334.6px; z-index: 2;">
-          <img src="assets/media/MAGXHSzUcl4.png" alt="Ilustración de los novios" />
+          <img loading="lazy" decoding="async" src="assets/media/MAGXHSzUcl4.webp" alt="Ilustración de los novios" />
         </div>
 
         <div class="c-el witness-text reveal-on-scroll" style="top: 2847.4px; left: 51.5px; width: 413.0px; height: 61.3px; z-index: 3;">
@@ -302,26 +306,26 @@
 
         <!-- Separador ornamental dorado -->
         <div class="c-el reveal-on-scroll" style="top: 2948.7px; left: 58.8px; width: 425.0px; height: 51.0px;">
-          <img src="assets/media/MAG6EeZBbM4_gold.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAG6EeZBbM4_gold.png" alt="" aria-hidden="true" />
         </div>
 
         <!-- Tres paneles fotográficos con la fecha: 30 | 01 | 27 (con efecto Ken Burns) -->
         <div class="c-el reveal-on-scroll" style="top: 3039.7px; left: 62.2px; width: 387.8px; height: 181.8px;">
           <!-- 30 -->
           <div class="c-el cover-img ken-burns-frame" style="top: 2.5px; left: 0px; width: 119.5px; height: 179.4px;">
-            <img class="ken-burns-img" src="assets/media/MAHZ4Tr9caA.jpg" alt="Anillo de compromiso - 30" />
+            <img loading="lazy" decoding="async" class="ken-burns-img" src="assets/media/MAHZ4Tr9caA.webp" alt="Anillo de compromiso - 30" />
           </div>
           <div class="c-el date-photo-num" style="top: 2.5px; left: 0px; width: 119.5px; height: 179.4px;">30</div>
 
           <!-- 01 -->
           <div class="c-el cover-img ken-burns-frame" style="top: 2.5px; left: 131.5px; width: 119.6px; height: 179.4px;">
-            <img class="ken-burns-img kb-delay-1" src="assets/media/MAHZ4eNTYi8.jpg" alt="Pastel de bodas - 01" />
+            <img loading="lazy" decoding="async" class="ken-burns-img kb-delay-1" src="assets/media/MAHZ4eNTYi8.webp" alt="Pastel de bodas - 01" />
           </div>
           <div class="c-el date-photo-num" style="top: 2.5px; left: 131.5px; width: 119.6px; height: 179.4px;">01</div>
 
           <!-- 27 -->
           <div class="c-el cover-img ken-burns-frame" style="top: 0px; left: 268.3px; width: 119.5px; height: 179.4px;">
-            <img class="ken-burns-img kb-delay-2" src="assets/media/MAHZ4Tr9caA.jpg" alt="Anillo de compromiso - 27" />
+            <img loading="lazy" decoding="async" class="ken-burns-img kb-delay-2" src="assets/media/MAHZ4Tr9caA.webp" alt="Anillo de compromiso - 27" />
           </div>
           <div class="c-el date-photo-num" style="top: 0px; left: 268.3px; width: 119.5px; height: 179.4px;">27</div>
         </div>
@@ -329,34 +333,34 @@
         <!-- Dos ramitas de hojas verdes debajo de 30 | 01 | 27 -->
         <div class="c-el reveal-on-scroll" style="top: 3228.6px; left: 123.5px; width: 265.1px; height: 79.5px;">
           <div class="c-el" style="top: 0; left: 0; width: 132.6px; height: 79.5px;">
-            <img class="botanical-sway" src="assets/media/MAErw84sFDw.png" alt="" aria-hidden="true" />
+            <img loading="lazy" decoding="async" class="botanical-sway" src="assets/media/MAErw84sFDw.webp" alt="" aria-hidden="true" />
           </div>
           <div class="c-el" style="top: 0; left: 132.6px; width: 132.6px; height: 79.5px;">
-            <img class="botanical-sway" src="assets/media/MAErw84sFDw.png" alt="" aria-hidden="true" />
+            <img loading="lazy" decoding="async" class="botanical-sway" src="assets/media/MAErw84sFDw.webp" alt="" aria-hidden="true" />
           </div>
         </div>
 
         <!-- ==================== SECCIÓN 5: ITINERARIO ==================== -->
         <!-- Decoración botánica de fondo -->
         <div class="c-el" style="top: 3315.1px; left: 368.0px; width: 125.0px; height: 108.8px; pointer-events: none;">
-          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
         </div>
         <div class="c-el" style="top: 3326.0px; left: 16.0px; width: 72.0px; height: 225.0px; pointer-events: none;">
-          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
         </div>
 
         <!-- Título enmarcado: Itinerario -->
         <div class="c-el reveal-on-scroll" style="top: 3422.9px; left: 95.1px; width: 325.7px; height: 99.4px;">
-          <img src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
           <div class="c-el section-frame-title" style="top: 33.1px; left: 86.7px; width: 147.1px; height: 30.4px;">Itinerario</div>
         </div>
 
         <!-- Decoración botánica lateral (ubicada en espacios libres sin tocar textos ni líneas) -->
         <div class="c-el" style="top: 3856.0px; left: 16.0px; width: 66.0px; height: 206.0px; pointer-events: none;">
-          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
         </div>
         <div class="c-el" style="top: 3542.0px; left: 18.0px; width: 96.0px; height: 83.5px; pointer-events: none;">
-          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
         </div>
 
         <!-- Línea vertical central del Itinerario con dibujo progresivo -->
@@ -364,7 +368,7 @@
 
         <!-- Hito 1: El gran dia - 30 de Enero de 2027 -->
         <div class="c-el reveal-on-scroll" style="top: 3569.2px; left: 353.1px; width: 74.0px; height: 57.4px;">
-          <img src="assets/media/MAE3CFNmDL8_gold.png" alt="Anillos de boda" />
+          <img loading="lazy" decoding="async" src="assets/media/MAE3CFNmDL8_gold.png" alt="Anillos de boda" />
         </div>
         <div class="c-el timeline-line-h reveal-on-scroll" style="top: 3641.3px; left: 269.6px; width: 201.3px;"></div>
         <div class="c-el itinerary-heading reveal-on-scroll" style="top: 3660.4px; left: 325.0px; width: 145.8px; height: 33.4px;">El gran dia</div>
@@ -372,7 +376,7 @@
 
         <!-- Hito 2: Ceremonia - 17:00 hrs -->
         <div class="c-el reveal-on-scroll" style="top: 3652.9px; left: 127.7px; width: 90.1px; height: 94.9px;">
-          <img src="assets/media/MAHDQTFdHhw_colored.svg" alt="Iglesia Ceremonia" />
+          <img loading="lazy" decoding="async" src="assets/media/MAHDQTFdHhw_colored.svg" alt="Iglesia Ceremonia" />
         </div>
         <div class="c-el timeline-line-h reveal-on-scroll" style="top: 3759.7px; left: 69.9px; width: 201.3px;"></div>
         <div class="c-el itinerary-heading reveal-on-scroll" style="top: 3775.8px; left: 94.3px; width: 152.3px; height: 33.4px;">Ceremonia</div>
@@ -380,7 +384,7 @@
 
         <!-- Hito 3: Recepción - 20:00 hrs -->
         <div class="c-el reveal-on-scroll" style="top: 3798.3px; left: 342.3px; width: 95.5px; height: 71.6px;">
-          <img src="assets/media/MAHARRwVbPg_itinerario.png" alt="Recepción" />
+          <img loading="lazy" decoding="async" src="assets/media/MAHARRwVbPg_itinerario.webp" alt="Recepción" />
         </div>
         <div class="c-el timeline-line-h reveal-on-scroll" style="top: 3876.0px; left: 272.2px; width: 201.3px;"></div>
         <div class="c-el itinerary-heading reveal-on-scroll" style="top: 3895.1px; left: 318.9px; width: 142.4px; height: 33.4px;">Recepción</div>
@@ -389,15 +393,15 @@
         <!-- ==================== SECCIÓN 6: CÓDIGO DE VESTIMENTA ==================== -->
         <!-- Decoración botánica de fondo -->
         <div class="c-el" style="top: 4135.0px; left: 12.0px; width: 62.0px; height: 194.0px; pointer-events: none;">
-          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
         </div>
         <div class="c-el" style="top: 4195.0px; left: 382.0px; width: 115.0px; height: 100.0px; pointer-events: none;">
-          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
         </div>
 
         <!-- Título enmarcado: Código de vestimenta -->
         <div class="c-el reveal-on-scroll" style="top: 4085.7px; left: 107.0px; width: 320.1px; height: 97.6px;">
-          <img src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
         </div>
         <div class="c-el section-frame-title reveal-on-scroll" style="top: 4119.2px; left: 120.1px; width: 293.9px; height: 29.9px;">
           Código de vestimenta
@@ -410,7 +414,7 @@
 
         <!-- Icono traje y vestido -->
         <div class="c-el reveal-on-scroll" style="top: 4281.9px; left: 227.9px; width: 78.3px; height: 61.5px;">
-          <img src="assets/media/MAGATB4kQWs_gold.png" alt="Formal playero" />
+          <img loading="lazy" decoding="async" src="assets/media/MAGATB4kQWs_gold.webp" alt="Formal playero" />
         </div>
 
         <!-- Descripción Para ellas / Para ellos -->
@@ -422,15 +426,15 @@
         <!-- ==================== SECCIÓN 7: REGALOS ==================== -->
         <!-- Decoración botánica de fondo -->
         <div class="c-el" style="top: 4590.0px; left: 10.0px; width: 58.0px; height: 181.0px; pointer-events: none;">
-          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
         </div>
         <div class="c-el" style="top: 4610.0px; left: 396.0px; width: 108.0px; height: 94.0px; pointer-events: none;">
-          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
         </div>
 
         <!-- Título enmarcado: Regalos -->
         <div class="c-el reveal-on-scroll" style="top: 4601.6px; left: 97.5px; width: 325.7px; height: 99.4px;">
-          <img src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
           <div class="c-el section-frame-title" style="top: 34.5px; left: 9.3px; width: 299.1px; height: 30.4px;">Regalos</div>
         </div>
 
@@ -442,21 +446,21 @@
         <!-- ==================== SECCIÓN 8: UBICACIÓN ==================== -->
         <!-- Decoración botánica de fondo -->
         <div class="c-el" style="top: 5041.2px; left: 24.0px; width: 72.0px; height: 225.0px; pointer-events: none;">
-          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
         </div>
         <div class="c-el" style="top: 5042.2px; left: 362.0px; width: 125.0px; height: 108.8px; pointer-events: none;">
-          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
         </div>
         <div class="c-el" style="top: 5465.8px; left: 362.0px; width: 125.0px; height: 108.8px; pointer-events: none;">
-          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
         </div>
         <div class="c-el" style="top: 5440.0px; left: 24.0px; width: 72.0px; height: 210.0px; pointer-events: none;">
-          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
         </div>
 
         <!-- Título enmarcado: Ubicación -->
         <div class="c-el reveal-on-scroll" style="top: 4860.2px; left: 101.0px; width: 318.8px; height: 97.2px;">
-          <img src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
           <div class="c-el section-frame-title" style="top: 33.7px; left: 12.5px; width: 292.7px; height: 29.8px;">Ubicación</div>
         </div>
 
@@ -475,10 +479,10 @@
           <a class="c-el interactive-link" style="top: 50.2px; left: 26.3px; width: 90.1px; height: 94.9px;"
              href="https://www.google.com/maps?q=-37.5782046,-73.6407207&amp;entry=gps&amp;shh=CAE&amp;lucs=,94297699,94231188,94280568,100821555,47071704,94218641,94282134,100835694,94286869,100820247,100822504,100838877,121816461&amp;g_ep=CAISEjI2LjQzLjEuMDAxOTUxMTAxMBgBIIgnKnssOTQyOTc2OTksOTQyMzExODgsOTQyODA1NjgsMTAwODIxNTU1LDQ3MDcxNzA0LDk0MjE4NjQxLDk0MjgyMTM0LDEwMDgzNTY5NCw5NDI4Njg2OSwxMDA4MjAyNDcsMTAwODIyNTA0LDEwMDgzODg3NywxMjE4MTY0NjFCAkNM&amp;skid=8e2ce966-6e0b-4fff-804e-ddf5273ade73&amp;g_st=iw"
              target="_blank" rel="noopener noreferrer" aria-label="Ver ubicación de la Ceremonia en Google Maps">
-            <img src="assets/media/MAHDQTFdHhw_colored.svg" alt="Ubicación Ceremonia" />
+            <img loading="lazy" decoding="async" src="assets/media/MAHDQTFdHhw_colored.svg" alt="Ubicación Ceremonia" />
           </a>
           <div class="c-el click-hand-green" style="top: 109.9px; left: 116.6px; width: 32.9px; height: 54.8px;">
-            <img src="assets/media/MAG4YM0K2_M_green.png" alt="" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/media/MAG4YM0K2_M_green.png" alt="" aria-hidden="true" />
           </div>
           <div class="c-el location-label" style="top: 152.0px; left: 24.2px; width: 102.6px; height: 22.3px;">
             Ceremonia
@@ -488,10 +492,10 @@
           <a class="c-el interactive-link" style="top: 226.2px; left: 21.2px; width: 95.5px; height: 71.6px;"
              href="https://www.google.com/maps/place/37%C2%B035'54.4%22S+73%C2%B039'14.7%22W/@-37.5984511,-73.6566577,17z/data=!4m4!3m3!8m2!3d-37.5984511!4d-73.6540828?entry=ttu&amp;g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D"
              target="_blank" rel="noopener noreferrer" aria-label="Ver ubicación de la Recepción en Google Maps">
-            <img src="assets/media/MAHARRwVbPg_ubicacion.png" alt="Ubicación Recepción" />
+            <img loading="lazy" decoding="async" src="assets/media/MAHARRwVbPg_ubicacion.webp" alt="Ubicación Recepción" />
           </a>
           <div class="c-el click-hand-green" style="top: 256.7px; left: 119.6px; width: 32.9px; height: 54.8px;">
-            <img src="assets/media/MAG4YM0K2_M_green.png" alt="" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/media/MAG4YM0K2_M_green.png" alt="" aria-hidden="true" />
           </div>
           <div class="c-el location-label" style="top: 309.2px; left: 26.7px; width: 93.0px; height: 22.3px;">
             Recepción
@@ -501,10 +505,10 @@
           <a class="c-el interactive-link" style="top: 414.6px; left: 14.9px; width: 130.9px; height: 100.8px;"
              href="https://www.google.com/maps?q=-37.5782046,-73.6407207&amp;entry=gps&amp;shh=CAE&amp;lucs=,94297699,94231188,94280568,100821555,47071704,94218641,94282134,100835694,94286869,100820247,100822504,100838877,121816461&amp;g_ep=CAISEjI2LjQzLjEuMDAxOTUxMTAxMBgBIIgnKnssOTQyOTc2OTksOTQyMzExODgsOTQyODA1NjgsMTAwODIxNTU1LDQ3MDcxNzA0LDk0MjE4NjQxLDk0MjgyMTM0LDEwMDgzNTY5NCw5NDI4Njg2OSwxMDA4MjAyNDcsMTAwODIyNTA0LDEwMDgzODg3NywxMjE4MTY0NjFCAkNM&amp;skid=8e2ce966-6e0b-4fff-804e-ddf5273ade73&amp;g_st=iw"
              target="_blank" rel="noopener noreferrer" aria-label="Ver ubicación de las Cabañas en Google Maps">
-            <img src="assets/media/MAHXOVmgOGg_gold.png" alt="Ubicación Cabañas" />
+            <img loading="lazy" decoding="async" src="assets/media/MAHXOVmgOGg_gold.webp" alt="Ubicación Cabañas" />
           </a>
           <div class="c-el click-hand-green" style="top: 489.4px; left: 125.9px; width: 32.9px; height: 54.8px;">
-            <img src="assets/media/MAG4YM0K2_M_green.png" alt="" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/media/MAG4YM0K2_M_green.png" alt="" aria-hidden="true" />
           </div>
           <div class="c-el location-label" style="top: 522.0px; left: 42.9px; width: 75.0px; height: 22.3px;">
             Cabañas
@@ -514,24 +518,24 @@
         <!-- ==================== SECCIÓN 9: CONSIDERACIONES & CONFIRMACIÓN ==================== -->
         <!-- Decoración botánica de fondo (posicionada en márgenes libres sin pisar textos) -->
         <div class="c-el" style="top: 5915.0px; left: 14.0px; width: 60.0px; height: 185.0px; pointer-events: none;">
-          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
         </div>
         <div class="c-el" style="top: 5923.0px; left: 368.0px; width: 122.0px; height: 106.0px; pointer-events: none;">
-          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
         </div>
         <div class="c-el" style="top: 6475.0px; left: 374.0px; width: 120.0px; height: 104.0px; pointer-events: none;">
-          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
         </div>
         <div class="c-el" style="top: 6475.0px; left: 22.0px; width: 72.0px; height: 225.0px; pointer-events: none;">
-          <img src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAFVi2rRKpY_clean.png" alt="" aria-hidden="true" />
         </div>
         <div class="c-el" style="top: 6695.0px; left: 374.0px; width: 115.0px; height: 100.0px; pointer-events: none;">
-          <img src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAD3oAvsPgQ.svg" alt="" aria-hidden="true" />
         </div>
 
         <!-- Título enmarcado: Consideraciones -->
         <div class="c-el reveal-on-scroll" style="top: 5654.6px; left: 98.6px; width: 318.8px; height: 97.2px;">
-          <img src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAHZwff4Fsg.png" alt="" aria-hidden="true" />
           <div class="c-el section-frame-title" style="top: 33.7px; left: 14.1px; width: 292.7px; height: 29.8px;">Consideraciones</div>
         </div>
 
@@ -542,12 +546,12 @@
 
         <!-- Divisor de corazón dorado -->
         <div class="c-el reveal-on-scroll" style="top: 5866.9px; left: 58.9px; width: 398.3px; height: 43.8px;">
-          <img src="assets/media/MAG4CofDznc_gold.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAG4CofDznc_gold.png" alt="" aria-hidden="true" />
         </div>
 
         <!-- Ramo floral acuarela con brisa suave -->
         <div class="c-el reveal-on-scroll" style="top: 5956.6px; left: 182.9px; width: 150.2px; height: 138.2px;">
-          <img class="botanical-sway" src="assets/media/MAE9R9ERjuo.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" class="botanical-sway" src="assets/media/MAE9R9ERjuo.webp" alt="" aria-hidden="true" />
         </div>
 
         <!-- Texto confirmación -->
@@ -559,16 +563,16 @@
         <a class="c-el interactive-link reveal-on-scroll" style="top: 6172.9px; left: 193.4px; width: 162.7px; height: 162.7px;"
            href="https://www.survio.com/survey/d/U3C0F7F1P7E9T4O8C"
            target="_blank" rel="noopener noreferrer" aria-label="Confirmar mi asistencia a la boda">
-          <img src="assets/media/MABcjojUSAY_colored.svg" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MABcjojUSAY_colored.svg" alt="" aria-hidden="true" />
           <div class="c-el" style="top: 20.5px; left: 44.3px; width: 74.1px; height: 88.2px; pointer-events: none;">
-            <img src="assets/media/MAGVH8JO4Rw_colored.svg" alt="" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/media/MAGVH8JO4Rw_colored.svg" alt="" aria-hidden="true" />
           </div>
           <div class="c-el rsvp-btn-text" style="top: 117.7px; left: 25.6px; width: 111.5px; height: 26.3px;">
             confirmar mi asistencia
           </div>
         </a>
         <div class="c-el click-hand-green reveal-on-scroll" style="top: 6290.3px; left: 311.6px; width: 32.9px; height: 54.8px;">
-          <img src="assets/media/MAG4YM0K2_M_green.png" alt="" aria-hidden="true" />
+          <img loading="lazy" decoding="async" src="assets/media/MAG4YM0K2_M_green.png" alt="" aria-hidden="true" />
         </div>
 
         <!-- Textos finales de confirmación -->
@@ -584,9 +588,9 @@
         <div class="c-el reveal-on-scroll" style="top: 6473.2px; left: 182.3px; width: 184.9px; height: 313.5px;">
           <div class="arch-photo-container">
             <div class="arch-photo-clip">
-              <img class="ken-burns-arch" src="assets/media/MAHZ4VmXC28.jpg" alt="Kevin y Darling" />
+              <img loading="lazy" decoding="async" class="ken-burns-arch" src="assets/media/MAHZ4VmXC28.webp" alt="Kevin y Darling" />
             </div>
-            <img class="arch-frame-overlay" src="assets/media/MAEc7vgbZSM.png" alt="" aria-hidden="true" />
+            <img loading="lazy" decoding="async" class="arch-frame-overlay" src="assets/media/MAEc7vgbZSM.png" alt="" aria-hidden="true" />
           </div>
         </div>
 
