@@ -384,7 +384,7 @@ body.envelope-locked {
 .canva-canvas {
   position: relative;
   width: 516px;
-  height: 6962px;
+  height: 7342px;
   transform-origin: top left;
 }
 
@@ -1021,4 +1021,25 @@ body.envelope-locked {
   width: 1px;
   height: 16px;
   background-color: rgba(190, 133, 34, 0.3);
+}
+
+/* ==========================================================================
+   Padrinos
+   ========================================================================== */
+.padrinos-col-title {
+  font-family: 'Le Jour Script', cursive;
+  font-size: 34px;
+  color: var(--gold-amber);
+  text-align: center;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.padrinos-names {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: var(--forest-green);
+  text-align: center;
+  line-height: 1.75;
+  white-space: nowrap;
 }

@@ -10,7 +10,7 @@
   'use strict';
 
   const BASE_WIDTH = 516;
-  const BASE_HEIGHT = 6962;
+  const BASE_HEIGHT = 7342;
 
   // Elementos del DOM
   const body = document.body;
@@ -57,14 +57,15 @@
   const SPEED_READING = 33;
   let currentSpeed = SPEED_TRANSITION;
 
-  // Zonas del lienzo (en px de los 6962px originales) donde la cámara desacelera para leer
+  // Zonas del lienzo (en px del lienzo de 7342px) donde la cámara desacelera para leer
   const READING_ZONES = [
     [1620, 2310], // Guarda la fecha + Calendario Enero 2027 + Cuenta regresiva
     [3420, 4010], // Itinerario (El gran día, Ceremonia, Recepción)
-    [4090, 4530], // Código de vestimenta (Formal playero, Para ellas, Para ellos)
-    [4600, 4820], // Regalos
-    [4860, 5600], // Ubicación en Lebu (Ceremonia, Recepción, Cabañas)
-    [5660, 6440]  // Consideraciones y Confirmación de asistencia
+    [4050, 4430], // Padrinos
+    [4470, 4910], // Código de vestimenta (Formal playero, Para ellas, Para ellos)
+    [4980, 5200], // Regalos
+    [5240, 5980], // Ubicación en Lebu (Ceremonia, Recepción, Cabañas)
+    [6040, 6820]  // Consideraciones y Confirmación de asistencia
   ];
 
   /* ==========================================================================
@@ -252,7 +253,7 @@
   }
 
   function getTargetSpeedForPosition(scrollY) {
-    // Convertir posición actual del centro de la pantalla a coordenada base (0..6962)
+    // Convertir posición actual del centro de la pantalla a coordenada base (0..7342)
     const viewportCenterBaseY = (scrollY + window.innerHeight * 0.48) / currentScale;
     for (let i = 0; i < READING_ZONES.length; i++) {
       const [startY, endY] = READING_ZONES[i];
